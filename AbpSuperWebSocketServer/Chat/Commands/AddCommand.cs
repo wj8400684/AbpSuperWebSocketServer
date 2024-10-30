@@ -14,6 +14,8 @@ internal sealed class AddCommand : IAsyncCommand<WebSocketSession, StringPackage
             .Select(p => int.Parse(p))
             .Sum();
 
+        session.LogInformation("add {0}", result);
+
         await session.SendAsync(result.ToString(), cancellationToken);
     }
 }
